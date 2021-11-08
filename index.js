@@ -7,7 +7,7 @@ const router = express.Router();
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://William:Vargas2021*@cluster01.4fvpi.mongodb.net/BDGrupo26');
+mongoose.connect('mongodb+srv://William:Vargas2021*@cluster01.4fvpi.mongodb.net/BDgrupo26');
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get(
@@ -18,22 +18,34 @@ app.get(
 
 
 
-  app.post('/persona',
-  (request, response) => {
-      const data =request.body;
-    let personanueva = new schemaPersona ({
+app.post('/persona',
+(request, response) => {
+
+try {
+    const data =request.body;
+    let personaNueva = new schemaPersona ({
         id: data.id,
+        nombre: data.nombre,
         apellidos: data.apellidos,
         edad: data.edad,
-        nombre: data.nombre,
-    });
-
-    personanueva.save(
+    });  
+    personaNueva.save(
         function (error, datos){
-            
+            if (error){
+                response.send('Ocurrio un error');
+                response.send('Ocurrio una excepcion: '+ error.message); 
+            }else{
+                response.send('La persona ha sido creada');
+            }
         }
 
     );
+    
+} catch (error) {
+    response.send('Ocurrio una excepcion: '+ error.message); 
+}
+
+    
   }
   )
 
