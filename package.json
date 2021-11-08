@@ -1,0 +1,15 @@
+{
+  "name": "servicionodejs-g26",
+  "version": "1.0.0",
+  "description": "Servicio para explicar Node js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "William Vargas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12"
+  }
+}
